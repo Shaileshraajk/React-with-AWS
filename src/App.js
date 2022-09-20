@@ -1,23 +1,58 @@
-import logo from './logo.svg';
 import './App.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Home from './pages/Home';
+import Homepage from './Homepage';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+import ViewEmployee from './employees/ViewEmployee';
+import AddEmployee from './employees/AddEmployee';
+import EditEmployee from './employees/EditEmployee';
+import DeleteEmployee from './employees/DeleteEmployee';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+      <Router>
+      <Switch>
+
+      <Route path={"/viewempl/:id"}>
+          <ViewEmployee />
+        </Route>
+
+      <Route path={"/editempl/:id"}>
+        <EditEmployee />
+      </Route>
+
+      <Route path={"/deleteempl/:id"}>
+        <DeleteEmployee />
+      </Route>
+
+
+        <Route path={"/addEmpl"}>
+          <AddEmployee />
+        </Route>
+
+        <Route path={"/rglist"}>
+          <Home />
+        </Route>  
+
+        <Route path={"/"}>
+          <Homepage />
+        </Route>
+
+        
+
+        
+
+
+      </Switch>
+
+      </Router>
+      
     </div>
   );
 }
